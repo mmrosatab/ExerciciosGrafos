@@ -8,9 +8,7 @@ fila = []
 pred = {}
 
 arquivo = open("entrada.txt","+r")
-
 linhas = arquivo.read().splitlines()
-
 
 def main():
 
@@ -45,14 +43,12 @@ def main():
 				dist[v] = dist[u] + 1
 				pred[v] = u # seta predecessor de um vertice
 				fila.append(v)
-		h = input("Para")
 		
 		#desenfila
 		fila.pop(0)
 
 		cores[u] = "azul"
-
-
+		
 	print(dist)
 	
 if __name__ == '__main__':
