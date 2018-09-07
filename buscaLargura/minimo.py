@@ -2,7 +2,7 @@ import sys
 
 #tarefas pendentes
 
-#formatar entrada para passa o grafo G(dicionario de vertices e adjacencia) e s(label de vertice inicial)
+#formatar entrada para passar o grafo G(dicionario de vertices e adjacencia) e s(label de vertice inicial)
 #passar para função
 #fatorar a saida do alg p/ ficar a similar ao formato da resposta esperada pelo exercício(sem aspas ou virgula)
 
