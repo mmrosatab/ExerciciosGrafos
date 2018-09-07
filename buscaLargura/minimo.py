@@ -16,7 +16,7 @@ def main():
 	for x in linhas:
 		listaAux = x.split(" ")
 		G[listaAux[0]] = listaAux[1:] 
-		
+	
 	for x in G:
 		if x != "A":
 			dist[x] = 0
