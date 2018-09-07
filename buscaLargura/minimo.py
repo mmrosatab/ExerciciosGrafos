@@ -48,8 +48,9 @@ def main():
 		fila.pop(0)
 
 		cores[u] = "azul"
-		
-	print(dist)
+	
+	#as distancias armazenadas no dicionario dist
+	print(dist) #obs: formatar a saida para ficar igual a exercicio
 	
 if __name__ == '__main__':
 	main()
