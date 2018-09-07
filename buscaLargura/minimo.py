@@ -1,5 +1,11 @@
 import sys
 
+#tarefas pendentes
+
+#formatar entrada para passa o grafo G(dicionario de vertices e adjacencia) e s(label de vertice inicial)
+#passar para função
+#fatorar a saida do alg p/ ficar a similar ao formato da resposta esperada pelo exercício(sem aspas ou virgula)
+
 G = {}
 listaAux = []
 dist = {}
@@ -50,7 +56,7 @@ def main():
 		cores[u] = "azul"
 	
 	#as distancias armazenadas no dicionario dist
-	print(dist) #obs: formatar a saida para ficar igual a exercicio
+	print(dist)
 	
 if __name__ == '__main__':
 	main()
