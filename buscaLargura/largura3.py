@@ -51,7 +51,7 @@ def main():
 
     
     listaAux = []
-    arquivo = open("entrada.txt","+r")
+    arquivo = open("entrada.txt","r")
     linhas = arquivo.read().splitlines()
 
     G = Grafo()
