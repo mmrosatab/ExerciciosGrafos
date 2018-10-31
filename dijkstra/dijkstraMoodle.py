@@ -30,9 +30,6 @@ class Graph:
             u          = v_list[0]
             neighbours = v_list[1:]
 
-            #print(u)
-            #print(neighbours)
-
             if data.get(u) == None:
 
                 l = {}
@@ -48,7 +45,7 @@ class Graph:
                 data[neighbours[0]][u] = int(neighbours[1])
 
         self.data = data    
-        #print(data)
+
         return aux[0]
     
 def relaxa(G,u,v):
@@ -76,15 +73,13 @@ def dijsktra(G,s):
 
     inicializa(G,s)
 
-    G.fila = dict(sorted(G.fila.items(), key=lambda t:t[1]))
-
     while len(G.fila) > 0:
+        
         u = min(G.fila, key=G.fila.get)
 
         for k,v in G.data[u].iteritems():
             relaxa(G,u,k)
         del G.fila[u]
-        G.fila = dict(sorted(G.fila.items(), key=lambda t:t[1]))
 
 G = Graph()
 s = G.read(filename=None,ignore=0)

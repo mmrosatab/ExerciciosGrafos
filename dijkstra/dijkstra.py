@@ -76,15 +76,13 @@ def dijkstra(G,s):
 
     inicializa(G,s)
 
-    G.fila = dict(sorted(G.fila.items(), key=lambda t:t[1]))
-
     while len(G.fila) > 0:
+        
         u = min(G.fila, key=G.fila.get)
 
         for k,v in G.data[u].iteritems():
             relaxa(G,u,k)
         del G.fila[u]
-        G.fila = dict(sorted(G.fila.items(), key=lambda t:t[1]))
 
 G = Graph()
 s = G.read("edj.txt",ignore=0)
