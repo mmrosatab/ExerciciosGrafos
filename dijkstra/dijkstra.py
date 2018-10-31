@@ -6,7 +6,8 @@ class Graph:
     def __init__(self):
 
         self.data = {}
-        self.dist = {}
+        self.d = {}
+        self.fila = {}
         self.pred = {}
 
     def read(self,filename=None,ignore=0):
@@ -41,80 +42,56 @@ class Graph:
                 data[u][neighbours[0]] = int(neighbours[1])  
 
             if data.get(neighbours[0]) == None: # caso um dos vizinhos nao exista aresta incidindo em outro vertice
-                #print("Entrei")
-                #print(neighbours[0])
-                data[neighbours[0]] = {} 
+                #data[neighbours[0]] = {} 
+                data[neighbours[0]] = {u: int(neighbours[1])}
+            else:
+                data[neighbours[0]][u] = int(neighbours[1])
 
         self.data = data    
         #print(data)
         return aux[0]
     
-
-def pesoAresta(G,u,v):
-
-    for x,y in G.data[u].iteritems():
-        if x == v:
-            return y
-   
-
 def relaxa(G,u,v):
-    
 
-    w = pesoAresta(G,u,v)
-    
-    #print(G.dist[u])
-    #print(G.dist[v])
+    w = G.data[u][v]
 
-    if G.dist[u] + w < G.dist[v]:
-       G.dist[v] = G.dist[u] + w
-       G.pred[v] = u
+    if G.d[u] + w < G.d[v]:
+        G.d[v] = G.d[u] + w
+        G.pred[v] = u
 
 
 def inicializa(G,s):
 
     for x in G.data:
-        
-        #print("data:",x)
 
-        G.dist[x] = 1000
+        G.d[x] = G.fila[x] = float("inf")
         G.pred[x] = -1
     
-    G.dist[s] = 0    
+    G.d[s] = 0 
+    G.fila[s] = 0 
+    G.pred[s] = 'NULL' 
+     
 
+def dijkstra(G,s):
 
-def caminhoMinimo(G,s):
+    inicializa(G,s)
 
-    G.dist = dict(sorted(G.dist.items(), key=lambda t:t[1]))
-    #print("Estado Distancias: ", G.dist)
+    G.fila = dict(sorted(G.fila.items(), key=lambda t:t[1]))
 
-    while len(G.dist) > 0:
-
-        # minimo da fila
-        u = min(G.dist, key=G.dist.get)
-        
+    while len(G.fila) > 0:
+        u = min(G.fila, key=G.fila.get)
 
         for k,v in G.data[u].iteritems():
-
             relaxa(G,u,k)
-
-        del G.dist[u]
-
-        G.dist = dict(sorted(G.dist.items(), key=lambda t:t[1]))
-        #print("Estado Distancias: ", G.dist)
-
+        del G.fila[u]
+        G.fila = dict(sorted(G.fila.items(), key=lambda t:t[1]))
 
 G = Graph()
 s = G.read("edj.txt",ignore=0)
 
-print(s)
-print(G.data)
+dijkstra(G,s)
 
-inicializa(G,s)
-
-print("Distancias:", G.dist)
-print("Predecessores: ", G.pred)
-
-caminhoMinimo(G,s)
-
-#print("Distancias:", G.dist)
-#print("Predecessores: ", G.pred)
+pred = sorted(G.pred.items(), key=lambda t:t[0])
+    
+for k,v in pred:
+    print(k+" "+v)
