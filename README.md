@@ -1,2 +1,5 @@
-# Grafos
-Repositorio de exercícios da disciplina de grafos e algoritmos
+# ExerciciosGrafos
+
+Este repositório se destina aos exercícios da disciplina de Grafos e Algoritmos da UFRRJ.
+
+- 
